@@ -1,16 +1,15 @@
-package com.example.service;
+package com.example.api.service;
 
-import com.example.model.CarEntity;
-import com.example.model.OwnerCarEntity;
-import com.example.repositories.CarRepo;
-import com.example.repositories.OwnerCarRepo;
+import com.example.store.model.CarEntity;
+import com.example.store.model.OwnerCarEntity;
+import com.example.store.repositories.CarRepo;
+import com.example.store.repositories.OwnerCarRepo;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -34,7 +33,7 @@ public class OwnerCarService {
         ownerCarRepo.deleteById(ownerCarId);
     }
 
-    public OwnerCarEntity fetchOwnerCarByNumberOfRegistration(Long numberOfRegistration){
+    public OwnerCarEntity fetchOwnerCarByNumberOfRegistration(Long numberOfRegistration) {
 
         CarEntity car = carRepo.findCarEntitiesByNumberOfRegistration(numberOfRegistration);
 
@@ -56,11 +55,11 @@ public class OwnerCarService {
 //        return ownerCar;
 //    }
 
-    public List<OwnerCarEntity> fetchOwnersCarByFault(Long faultId){
+    public List<OwnerCarEntity> fetchOwnersCarByFault(Long faultId) {
 
         List<OwnerCarEntity> ownerCarEntities = ownerCarRepo.ownersCarByFault(faultId);
 
-        for (OwnerCarEntity ownerCar: ownerCarEntities) {
+        for (OwnerCarEntity ownerCar : ownerCarEntities) {
             System.out.println(
                     "Владелец машины: " +
                             "\nИмя: " + ownerCar.getFirstName() +
@@ -68,5 +67,10 @@ public class OwnerCarService {
                             "\nОтчество: " + ownerCar.getMiddleName());
         }
         return ownerCarEntities;
+    }
+
+    public List<OwnerCarEntity> fetchAll(){
+
+        return ownerCarRepo.findAll();
     }
 }

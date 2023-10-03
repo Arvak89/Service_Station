@@ -1,14 +1,13 @@
-package com.example.service;
+package com.example.api.service;
 
-import com.example.model.EmployeeEntity;
-import com.example.model.FaultEntity;
-import com.example.repositories.CarRepo;
-import com.example.repositories.EmployeeRepo;
-import com.example.repositories.FaultRepo;
+import com.example.store.model.EmployeeEntity;
+import com.example.store.model.FaultEntity;
+import com.example.store.repositories.CarRepo;
+import com.example.store.repositories.EmployeeRepo;
+import com.example.store.repositories.FaultRepo;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -53,6 +52,11 @@ public class EmployeeService {
                         "\nОтчество: " + employee.getMiddleName());
 
         return employee;
+    }
+
+    public List<EmployeeEntity> fetchAllEmployee(){
+
+        return employeeRepo.findAll();
     }
 
     public EmployeeEntity findEmployeeByFault(Long faultId){

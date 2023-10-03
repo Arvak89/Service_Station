@@ -1,12 +1,11 @@
-package com.example.repositories;
+package com.example.store.repositories;
 
-import com.example.model.CarEntity;
-import com.example.model.OwnerCarEntity;
+import com.example.store.model.CarEntity;
+import com.example.store.model.OwnerCarEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface OwnerCarRepo extends JpaRepository<OwnerCarEntity, Long> {
 

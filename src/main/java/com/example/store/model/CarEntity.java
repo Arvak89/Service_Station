@@ -1,11 +1,10 @@
-package com.example.model;
+package com.example.store.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.sql.Time;
-import java.time.Year;
 import java.util.List;
 
 @Entity
@@ -18,7 +17,7 @@ import java.util.List;
 @Builder
 @ToString
 public class CarEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Id
     @Column(name = "id", nullable = false)
     Long id;
@@ -35,8 +34,10 @@ public class CarEntity {
     @Column(name = "number_of_registration", nullable = false)
     Long numberOfRegistration;
 
+
     @OneToMany(mappedBy = "car", cascade = CascadeType.ALL)
     List<FaultEntity> faults;
+
 
     @OneToOne(cascade = CascadeType.REFRESH)
     OwnerCarEntity ownerCar;

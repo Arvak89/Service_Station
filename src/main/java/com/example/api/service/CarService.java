@@ -1,16 +1,14 @@
-package com.example.service;
+package com.example.api.service;
 
-import com.example.model.CarEntity;
-import com.example.model.EmployeeEntity;
-import com.example.model.OwnerCarEntity;
-import com.example.repositories.CarRepo;
-import com.example.repositories.OwnerCarRepo;
+import com.example.store.model.CarEntity;
+import com.example.store.model.OwnerCarEntity;
+import com.example.store.repositories.CarRepo;
+import com.example.store.repositories.OwnerCarRepo;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
-import java.time.Year;
 import java.util.List;
 import java.util.Optional;
 
@@ -98,4 +96,8 @@ public class CarService {
         return carRepo.findCarsByEmployee(employeeId);
     }
 
+    public List<CarEntity> fetchAll() {
+
+        return carRepo.findAll();
+    }
 }

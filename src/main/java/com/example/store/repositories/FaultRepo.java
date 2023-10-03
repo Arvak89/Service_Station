@@ -1,9 +1,7 @@
-package com.example.repositories;
+package com.example.store.repositories;
 
-import com.example.model.CarEntity;
-import com.example.model.EmployeeEntity;
-import com.example.model.FaultEntity;
-import com.example.model.OwnerCarEntity;
+import com.example.store.model.CarEntity;
+import com.example.store.model.FaultEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

@@ -1,5 +1,6 @@
-package com.example.model;
+package com.example.store.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -15,22 +16,22 @@ import java.util.List;
 @Setter
 @Builder
 public class OwnerCarEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Id
     @Column(name = "id", nullable = false)
-    private Long id;
+    Long id;
 
     @Column(name = "first_name", nullable = false, length = 45)
-    private String firstName;
+    String firstName;
 
     @Column(name = "second_name", nullable = false, length = 45)
-    private String secondName;
+    String secondName;
 
     @Column(name = "middle_name", nullable = false, length = 45)
-    private String middleName;
+    String middleName;
 
     @Column(name = "address", nullable = false, length = 45)
-    private String address;
+    String address;
 
     @OneToOne(mappedBy = "ownerCar", cascade = CascadeType.ALL)
     CarEntity car;

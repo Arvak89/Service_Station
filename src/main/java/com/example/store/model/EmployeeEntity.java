@@ -1,4 +1,4 @@
-package com.example.model;
+package com.example.store.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -13,7 +13,7 @@ import lombok.experimental.FieldDefaults;
 @Setter
 @Builder
 public class EmployeeEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Id
     @Column(name = "id", nullable = false)
     Long id;

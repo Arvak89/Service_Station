@@ -1,11 +1,10 @@
-package com.example.model;
+package com.example.store.model;
 
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.sql.Date;
-import java.sql.Time;
 
 @Entity
 @Table(name = "fault", schema = "car_info", catalog = "")
@@ -16,7 +15,7 @@ import java.sql.Time;
 @Setter
 @Builder
 public class FaultEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Id
     @Column(name = "id", nullable = false)
     Long id;
