@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -25,6 +26,12 @@ public class FaultService {
     EmployeeRepo employeeRepo;
     CarRepo carRepo;
     OwnerCarRepo ownerCarRepo;
+
+    public FaultEntity fetchFault(Long faultId) {
+        Optional<FaultEntity> faultOptional = faultRepo.findById(faultId);
+
+        return faultOptional.get();
+    }
 
     public FaultEntity createFault(String faultName, Date eliminationTime, Long employeeId, Long carId) {
 
@@ -81,5 +88,10 @@ public class FaultService {
         }
 
         return faults;
+    }
+
+    public List<FaultEntity> fetchAll() {
+
+        return faultRepo.findAll();
     }
 }

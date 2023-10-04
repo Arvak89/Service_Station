@@ -25,7 +25,7 @@ public class CarController {
     public final static String FETCH_ALL = "/api/car/all";
 
     @PostMapping(CREATE)
-    public void createOwnerCar(
+    public void createCar(
             @PathVariable(name = "owner_car_id", required = true) Long ownerCarId,
             @RequestParam(name = "year_of_release",required = true) Integer yearOfRelease,
             @RequestParam(name = "manufacturer",required = true) String manufacturer,
@@ -36,7 +36,7 @@ public class CarController {
     }
 
     @DeleteMapping(DELETE)
-    public void deleteOwnerCar(
+    public void deleteCar(
             @PathVariable(value = "id", required = true) Long id){
 
         carService.deleteCar(id);

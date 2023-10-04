@@ -34,10 +34,8 @@ public class CarEntity {
     @Column(name = "number_of_registration", nullable = false)
     Long numberOfRegistration;
 
-
     @OneToMany(mappedBy = "car", cascade = CascadeType.ALL)
     List<FaultEntity> faults;
-
 
     @OneToOne(cascade = CascadeType.REFRESH)
     OwnerCarEntity ownerCar;

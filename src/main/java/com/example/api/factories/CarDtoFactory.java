@@ -21,7 +21,6 @@ public class CarDtoFactory {
                 .brand(car.getBrand())
                 .build();
     }
-
     public List<CarDto> makeCarsDto(List<CarEntity> cars){
 
         return cars.stream().map(this::makeCarDto).collect(Collectors.toList());
