@@ -25,6 +25,8 @@ public class CarController {
     public final static String FETCH_ALL = "/api/car/all";
     public final static String FETCH_BY_OWNER_CAR = "/api/owner_car/{owner_car_id}/car";
     public final static String FETCH_BY_EMPLOYEE = "/api/employee/{employee_id}/car";
+    public final static String PATCH_BY_NUMBER_OF_REGISTRATION = "/api/edit/car/{car_id}";
+
 
     @PostMapping(CREATE)
     public void createCar(
@@ -42,6 +44,15 @@ public class CarController {
             @PathVariable(value = "id", required = true) Long id){
 
         carService.deleteCar(id);
+    }
+
+    @PatchMapping(PATCH_BY_NUMBER_OF_REGISTRATION)
+    public CarDto updateNumberOfRegistrationOfCar(
+            @PathVariable(name = "car_id", required = true) Long id,
+            @RequestParam(name = "number_of_registration",required = true) Long numberOfRegistration){
+
+
+        return carDtoFactory.makeCarDto(carService.updateNumberOfRegistrationById(id, numberOfRegistration));
     }
 
     @GetMapping(FETCH_BY_OWNER_CAR)

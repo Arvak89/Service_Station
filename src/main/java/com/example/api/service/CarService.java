@@ -7,6 +7,7 @@ import com.example.store.repositories.OwnerCarRepo;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,13 +51,6 @@ public class CarService {
 
         CarEntity ownerCar = carOptional.get();
 
-        System.out.println(
-                "Машина с такими характеристиками: " +
-                        "\nИзготовитель: " + ownerCar.getManufacturer() +
-                        "\nМарка: " + ownerCar.getBrand() +
-                        "\nНомер регистрации: " + ownerCar.getNumberOfRegistration() +
-                        "\nГод выпуска: " + ownerCar.getYearOfRelease());
-
         return ownerCar;
     }
 
@@ -69,13 +63,6 @@ public class CarService {
 
         CarEntity car = carRepo.findByOwnerCar(ownerCar);
 
-        System.out.println(
-                "Машина с такими характеристиками: " +
-                        "\nИзготовитель: " + car.getManufacturer() +
-                        "\nМарка: " + car.getBrand() +
-                        "\nНомер регистрации: " + car.getNumberOfRegistration() +
-                        "\nГод выпуска: " + car.getYearOfRelease());
-
         return car;
     }
 
@@ -83,7 +70,7 @@ public class CarService {
 
         CarEntity car = carRepo.findById(carId).orElseThrow(() ->
                 new RuntimeException(
-                        "Владельца с таким id не найдено!"));
+                        "Машины с таким id не найдено!"));
 
         car.setNumberOfRegistration(numberOfRegistration);
 
