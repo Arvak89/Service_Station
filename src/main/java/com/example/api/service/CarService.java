@@ -60,7 +60,7 @@ public class CarService {
         return ownerCar;
     }
 
-    public CarEntity findCarByOwnerCar(Long ownerId) {
+    public CarEntity fetchCarByOwnerCar(Long ownerId) {
 
         OwnerCarEntity ownerCar = ownerCarRepo.findById(ownerId)
                 .orElseThrow(() ->

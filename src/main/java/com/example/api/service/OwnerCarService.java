@@ -55,9 +55,9 @@ public class OwnerCarService {
 //        return ownerCar;
 //    }
 
-    public List<OwnerCarEntity> fetchOwnersCarByFault(Long faultId) {
+    public List<OwnerCarEntity> fetchOwnersCarByFault(String faultName) {
 
-        List<OwnerCarEntity> ownerCarEntities = ownerCarRepo.ownersCarByFault(faultId);
+        List<OwnerCarEntity> ownerCarEntities = ownerCarRepo.ownersCarByFault(faultName);
 
         for (OwnerCarEntity ownerCar : ownerCarEntities) {
             System.out.println(

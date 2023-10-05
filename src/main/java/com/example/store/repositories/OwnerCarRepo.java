@@ -13,9 +13,9 @@ public interface OwnerCarRepo extends JpaRepository<OwnerCarEntity, Long> {
             "select owner_car.id, owner_car.first_name, owner_car.second_name, owner_car.middle_name, owner_car.address " +
                     "from owner_car, fault " +
                     "join car on fault.car_id = car.id " +
-                    "where fault.id = ?1",
+                    "where fault.fault_name = ?1",
             nativeQuery = true)
-    List<OwnerCarEntity> ownersCarByFault(long faultId);
+    List<OwnerCarEntity> ownersCarByFault(String faultName);
 
     OwnerCarEntity findByCar(CarEntity car);
 }

@@ -20,8 +20,20 @@ public class EmployeeDtoFactory {
                 .build();
     }
 
+    public EmployeeDto makeEmployeeByFaultDto(EmployeeEntity employee) {
+
+        return EmployeeDto.builder()
+                .id(employee.getId())
+                .firstName(employee.getFirstName())
+                .middleName(employee.getMiddleName())
+                .secondName(employee.getSecondName())
+                .eliminationTime(employee.getFault().getEliminationTime())
+                .build();
+    }
+
     public List<EmployeeDto> makeEmployeesDto(List<EmployeeEntity> employees){
 
         return employees.stream().map(this::makeEmployeeDto).collect(Collectors.toList());
     }
+
 }

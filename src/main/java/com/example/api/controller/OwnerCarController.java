@@ -21,8 +21,9 @@ public class OwnerCarController {
 
     public final static String CREATE = "/api/owner_car";
     public final static String DELETE = "/api/owner_car/{id}";
-    public final static String FETCH_BY_NUMBER = "/api/owner_car/{number_of_registration}";
+    public final static String FETCH_BY_NUMBER = "/api/car/{number_of_registration}/owner";
     public final static String FETCH_ALL = "/api/owner_car/all";
+    public final static String FETCH_BY_FAULT_NAME = "/api/fault/{fault_name}/owner_car";
 
     @PostMapping(CREATE)
     public void createOwnerCar(
@@ -39,6 +40,14 @@ public class OwnerCarController {
             @PathVariable("number_of_registration") Long numberOfRegistration){
 
         return ownerCarDtoFactory.makeOwnerCarDto(ownerCarService.fetchOwnerCarByNumberOfRegistration(numberOfRegistration));
+    }
+
+    @GetMapping(FETCH_BY_FAULT_NAME)
+    public List<OwnerCarDto> fetchOwnerCarByFaultName(
+            @PathVariable("fault_name") String faultName){
+
+        System.out.println(faultName);
+        return ownerCarDtoFactory.makeOwnersCarDto(ownerCarService.fetchOwnersCarByFault(faultName));
     }
 
     @DeleteMapping(DELETE)

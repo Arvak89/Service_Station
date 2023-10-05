@@ -59,7 +59,7 @@ public class EmployeeService {
         return employeeRepo.findAll();
     }
 
-    public EmployeeEntity findEmployeeByFault(Long faultId){
+    public EmployeeEntity fetchEmployeeByFault(Long faultId){
 
         FaultEntity fault = faultRepo.findById(faultId).orElseThrow(() ->
                 new RuntimeException(

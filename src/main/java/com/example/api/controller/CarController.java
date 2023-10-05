@@ -23,6 +23,8 @@ public class CarController {
     public final static String DELETE = "/api/car/{id}";
     public final static String FETCH_BY_ID = "/api/car/{id}";
     public final static String FETCH_ALL = "/api/car/all";
+    public final static String FETCH_BY_OWNER_CAR = "/api/owner_car/{owner_car_id}/car";
+    public final static String FETCH_BY_EMPLOYEE = "/api/employee/{employee_id}/car";
 
     @PostMapping(CREATE)
     public void createCar(
@@ -40,6 +42,20 @@ public class CarController {
             @PathVariable(value = "id", required = true) Long id){
 
         carService.deleteCar(id);
+    }
+
+    @GetMapping(FETCH_BY_OWNER_CAR)
+    public CarDto fetchCarByOwnerCar(
+            @PathVariable(name = "owner_car_id", required = true) Long id){
+
+        return carDtoFactory.makeCarDto(carService.fetchCarByOwnerCar(id));
+    }
+
+    @GetMapping(FETCH_BY_EMPLOYEE)
+    public List<CarDto> fetchCarByEmployee(
+            @PathVariable(name = "employee_id", required = true) Long id){
+
+        return carDtoFactory.makeCarsDto(carService.fetchCarsByEmployee(id));
     }
 
     @GetMapping(FETCH_BY_ID)

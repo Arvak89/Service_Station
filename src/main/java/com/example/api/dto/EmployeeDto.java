@@ -1,9 +1,13 @@
 package com.example.api.dto;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.sql.Date;
 
 @Data
 @Builder
@@ -23,6 +27,9 @@ public class EmployeeDto {
     String secondName;
 
     @NonNull
-    @Column(name = "middle_name", nullable = false, length = 45)
+    @JsonProperty("middle_name")
     String middleName;
+
+    @JsonProperty("elimination_time")
+    Date eliminationTime;
 }

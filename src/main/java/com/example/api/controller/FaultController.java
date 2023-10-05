@@ -24,6 +24,7 @@ public class FaultController {
     public final static String DELETE = "/api/fault/{id}";
     public final static String FETCH_BY_ID = "/api/fault/{fault_id}";
     public final static String FETCH_ALL = "/api/fault/all";
+    public final static String FETCH_BY_OWNER_CAR = "/api/owner_car/{owner_car_id}/fault";
 
     @PostMapping(CREATE)
     public void createFault(
@@ -47,6 +48,13 @@ public class FaultController {
             @PathVariable(name = "id", required = true) Long id){
 
         return faultDtoFactory.makeFaultDto(faultService.fetchFault(id));
+    }
+
+    @GetMapping(FETCH_BY_OWNER_CAR)
+    public List<FaultDto> fetchFaultByOwnerCar(
+            @PathVariable(name = "owner_car_id", required = true) Long id){
+
+        return faultDtoFactory.makeFaultsDto(faultService.fetchFaultsByOwnerId(id));
     }
 
     @GetMapping(FETCH_ALL)
